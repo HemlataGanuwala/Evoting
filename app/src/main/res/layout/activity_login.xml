@@ -58,7 +58,7 @@
                     android:background="@drawable/bg_edittext"
                     android:drawableLeft="@drawable/icon_name"
                     android:drawablePadding="5dp"
-                    android:hint="User Name"
+                    android:hint="Enrollment No"
                     android:padding="10dp"
                     android:textColor="@color/gray" />
 
@@ -82,7 +82,7 @@
                     android:background="@drawable/bg_edittext"
                     android:drawableLeft="@drawable/icon_passwod"
                     android:drawablePadding="5dp"
-                    android:hint="Passwor"
+                    android:hint="Password"
                     android:padding="10dp"
                     android:textColor="@color/gray" />
 

@@ -1,6 +1,8 @@
 package com.example.dhanashri.evoting;
 
-public class GlobalClass {
+import android.app.Application;
+
+public class GlobalClass extends Application {
 
     public String constr = "";
 

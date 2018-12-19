@@ -22,6 +22,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent= new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -29,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent intent= new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

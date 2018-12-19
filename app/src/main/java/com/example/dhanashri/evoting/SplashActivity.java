@@ -7,6 +7,9 @@ import android.os.Bundle;
 
 public class SplashActivity extends AppCompatActivity {
 
+
+
+
     public int splash_out_time=4000;
 
     @Override
@@ -14,7 +17,9 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        
+        final GlobalClass globalClass=(GlobalClass)getApplicationContext();
+        globalClass.setconstr("http://192.168.0.111:8052/api/");
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
