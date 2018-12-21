@@ -1,10 +1,15 @@
 package com.example.dhanashri.evoting;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,17 +25,27 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText editTextfirstnm, editTextmidlenm, editTextlastnm, editTextenrollno, editTextemailid, editTextmobileno, editTextpassword, editTextaddress, editTextdob;
-    RadioButton radioButtonfemale, radioButtonmale;
-    Spinner spinnersemister, spinnerbranch;
-    Button register;
     String path,firstnm,middlenm,lastnm, enrollno, emailid, mobileno, password, address, dob, semister, branch;
+
+    RadioButton radioButtonfemale, radioButtonmale;
+
+    Spinner spinnersemister, spinnerbranch;
+
+    Button register;
+
     ServiceHandler shh;
     ProgressDialog progressDialog;
+
+    int Status = 1;
+
+    int year, month, day;
+    private DatePickerDialog.OnDateSetListener dateSetListener;
 
     String spsemisters[] = {"Semister I", "Semister II", "Semister III", "Semister IV", "Semister V", "semister VI"};
     String spbranch[] = {"CS", "EE", "EE", "ETC", "ME"};
@@ -60,12 +75,12 @@ public class RegisterActivity extends AppCompatActivity {
         spinnersemister = (Spinner) findViewById(R.id.spsemister);
         spinnerbranch = (Spinner) findViewById(R.id.spbranch);
 
-        spinnersemister.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+//        spinnersemister.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spsemisters);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnersemister.setAdapter(adapter);
 
-        spinnerbranch.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+//        spinnerbranch.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
         adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spbranch);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerbranch.setAdapter(adapter);
@@ -74,8 +89,24 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(RegisterActivity.this, "Register Successfully", Toast.LENGTH_LONG).show();
+                Validation();
                 InsertData();
+
+            }
+        });
+
+        editTextdob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Calendar calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                day = calendar.get(calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,dateSetListener,year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
 
             }
         });
@@ -98,13 +129,21 @@ public class RegisterActivity extends AppCompatActivity {
         new GetPersonData().execute();
     }
 
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
+    public void Validation()
     {
-        Toast.makeText(getApplicationContext(), spsemisters[position], Toast.LENGTH_LONG).show();
-        Toast.makeText(getApplicationContext(), spbranch[position], Toast.LENGTH_LONG).show();
+        String MobilePattern = "[0-9]{10}";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+
     }
 
-    public void onNothingSelected(AdapterView<?> arg0) { }
+//    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
+//    {
+//        Toast.makeText(getApplicationContext(), spsemisters[position], Toast.LENGTH_LONG).show();
+//        Toast.makeText(getApplicationContext(), spbranch[position], Toast.LENGTH_LONG).show();
+//    }
+//
+//    public void onNothingSelected(AdapterView<?> arg0) { }
 
     public class GetPersonData extends AsyncTask<String, String, String> {
 
@@ -150,6 +189,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String jsonStr = shh.makeServiceCall(url, ServiceHandler.POST, para);
                 if (jsonStr != null) {
                     JSONObject jObj = new JSONObject(jsonStr);
+                    Status = jObj.getInt("Status");
 
 
                 } else {
@@ -168,8 +208,13 @@ public class RegisterActivity extends AppCompatActivity {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
             progressDialog.dismiss();
-            List<String> lables = new ArrayList<String>();
-
+           if (Status == 1)
+           {
+               Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_LONG).show();
+           }
+            else {
+               Toast.makeText(RegisterActivity.this, "Registered Failed", Toast.LENGTH_LONG).show();
+           }
 
         }
     }
