@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -19,71 +18,73 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity {
+public class ForgotpassActivity extends AppCompatActivity {
 
-    Button login, register;
-    EditText editTextusername, editTextpassword;
-    TextView textViewforgotpass;
+    Button changepass, back;
+
+    EditText editTextenrollno, editTextpass, editTextconformpass;
+    String enrollno, password, conformpass, path, pwd;
+
     ProgressDialog progressDialog;
     ServiceHandler shh;
-    int Status = 1;
-    String path, username, password;
 
+    int Status = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_forgotpass);
 
         final GlobalClass globalClass=(GlobalClass)getApplicationContext();
         path= globalClass.getconstr();
 
-        login=(Button)findViewById(R.id.btnlogin);
-        register=(Button)findViewById(R.id.btnregister);
+        changepass=(Button)findViewById(R.id.btnchangepass);
+        back =(Button)findViewById(R.id.btnback);
 
-        editTextusername=(EditText)findViewById(R.id.etusername);
-        editTextpassword=(EditText)findViewById(R.id.etpass);
+        editTextenrollno=(EditText)findViewById(R.id.etuser);
+        editTextpass=(EditText)findViewById(R.id.etpass);
+        editTextconformpass= (EditText)findViewById(R.id.etconformpass);
 
-        textViewforgotpass=(TextView)findViewById(R.id.tvforgotpass);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        changepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                InsertData();
-
+               InsertData();
 
             }
+
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
+
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent= new Intent(LoginActivity.this, RegisterActivity.class);
+                Intent intent= new Intent(ForgotpassActivity.this, LoginActivity.class);
                 startActivity(intent);
-            }
-        });
 
-        textViewforgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent= new Intent(LoginActivity.this, ForgotpassActivity.class);
-                startActivity(intent);
             }
+
         });
     }
 
+    public void InsertData(){
+        enrollno = editTextenrollno.getText().toString();
+        password = editTextpass.getText().toString();
+        conformpass=editTextconformpass.getText().toString();
 
-    public void InsertData()
-    {
+        if(!password.equals(conformpass))
+        {
+            Toast.makeText(ForgotpassActivity.this, "Password not Matche", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            new GetPersonData().execute();
+        }
 
-        username=editTextusername.getText().toString();
-        password=editTextpassword.getText().toString();
-
-        new GetPersonData().execute();
     }
+
 
 
     public class GetPersonData extends AsyncTask<String, String, String> {
@@ -92,7 +93,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPreExecute() {
             // TODO Auto-generated method stub
             super.onPreExecute();
-            progressDialog = new ProgressDialog(LoginActivity.this);
+            progressDialog = new ProgressDialog(ForgotpassActivity.this);
             progressDialog.setMessage("Loading...");
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setProgress(0);
@@ -106,16 +107,17 @@ public class LoginActivity extends AppCompatActivity {
 
             shh = new ServiceHandler();
 
-            String url = path + "Registration/UserLogin";
+            String url = path + "Registration/ForgotPassword";
 
             Log.d("Url: ", "> " + url);
 
             try {
 
+
                 List<NameValuePair> para = new ArrayList<>();
 
-                para.add(new BasicNameValuePair("enrollmentno", username));
-                para.add(new BasicNameValuePair("studentpassword", password));
+                para.add(new BasicNameValuePair("enrollmentno", enrollno));
+                para.add(new BasicNameValuePair("studentpassword", conformpass));
 
                 String jsonStr = shh.makeServiceCall(url, ServiceHandler.POST, para);
                 if (jsonStr != null) {
@@ -124,7 +126,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(LoginActivity.this, "Data not Found", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgotpassActivity.this, "Data not Found", Toast.LENGTH_LONG).show();
                 }
 
             } catch (Exception e) {
@@ -143,21 +145,22 @@ public class LoginActivity extends AppCompatActivity {
 
             if (Status == 1)
             {
-                Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_LONG).show();
-                Intent intent= new Intent(LoginActivity.this, DashboardActivity.class);
-                startActivity(intent);
+                    Toast.makeText(ForgotpassActivity.this, "Password Successfully Changed", Toast.LENGTH_LONG).show();
 
             }
-            else {
-                Toast.makeText(LoginActivity.this, "Login Failed", Toast.LENGTH_LONG).show();
+
+            else
+                {
+
+
+                Toast.makeText(ForgotpassActivity.this, "Password Dosenot Match", Toast.LENGTH_LONG).show();
             }
 
-            editTextusername.setText("");
-            editTextpassword.setText("");
+            editTextenrollno.setText("");
+            editTextpass.setText("");
+            editTextconformpass.setText("");
+
 
         }
     }
 }
-
-
-

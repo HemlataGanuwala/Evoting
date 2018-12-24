@@ -72,7 +72,7 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/etpassword"
+                    android:id="@+id/etpass"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -107,6 +107,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvforgotpass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"

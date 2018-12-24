@@ -14,8 +14,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -24,16 +26,21 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class RegisterActivity extends AppCompatActivity {
 
     EditText editTextfirstnm, editTextmidlenm, editTextlastnm, editTextenrollno, editTextemailid, editTextmobileno, editTextpassword, editTextaddress, editTextdob;
-    String path,firstnm,middlenm,lastnm, enrollno, emailid, mobileno, password, address, dob, semister, branch;
+    String path,firstnm,middlenm,lastnm, enrollno, emailid, mobileno, password, address, dob, semister, branch, gender;
 
     RadioButton radioButtonfemale, radioButtonmale;
+    RadioGroup radioGroup;
+
+    Calendar myCalendar = Calendar.getInstance();
 
     Spinner spinnersemister, spinnerbranch;
 
@@ -44,11 +51,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     int Status = 1;
 
-    int year, month, day;
+    public    int year, month, day;
     private DatePickerDialog.OnDateSetListener dateSetListener;
 
-    String spsemisters[] = {"Semister I", "Semister II", "Semister III", "Semister IV", "Semister V", "semister VI"};
-    String spbranch[] = {"CS", "EE", "EE", "ETC", "ME"};
+    private String spsemisters[] = {"Semister I", "Semister II", "Semister III", "Semister IV", "Semister V", "semister VI"};
+    private String spbranch[] = {"CS", "EE", "EE", "ETC", "ME"};
 
     ArrayAdapter adapter;
 
@@ -57,11 +64,13 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        final GlobalClass globalClass=(GlobalClass)getApplicationContext();
+        path= globalClass.getconstr();
+
         editTextfirstnm = (EditText) findViewById(R.id.etfirstname);
         editTextmidlenm = (EditText)findViewById(R.id.etmiddlename);
         editTextlastnm = (EditText)findViewById(R.id.etlastname);
         editTextenrollno = (EditText)findViewById(R.id.etenrollno);
-        editTextemailid = (EditText) findViewById(R.id.etemailid);
         editTextmobileno = (EditText) findViewById(R.id.etmobileno);
         editTextpassword = (EditText) findViewById(R.id.etpassword);
         editTextaddress = (EditText) findViewById(R.id.etaddress);
@@ -85,30 +94,41 @@ public class RegisterActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerbranch.setAdapter(adapter);
 
+
+
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Validation();
                 InsertData();
 
             }
+
         });
+
+       final DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+           @Override
+           public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+
+               myCalendar.set(Calendar.YEAR, year);
+               myCalendar.set(Calendar.MONTH, month);
+               myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+               String formate= "dd/mm/yyyy";
+               SimpleDateFormat simpleDateFormat = new SimpleDateFormat(formate, Locale.UK);
+
+               editTextdob.setText(simpleDateFormat.format(myCalendar.getTime()));
+
+           }
+       };
 
         editTextdob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Calendar calendar = Calendar.getInstance();
-                year = calendar.get(Calendar.YEAR);
-                month = calendar.get(Calendar.MONTH);
-                day = calendar.get(calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(RegisterActivity.this,android.R.style.Theme_Holo_Light_Dialog_MinWidth,dateSetListener,year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                new DatePickerDialog(RegisterActivity.this, dateSetListener, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
 
             }
+
         });
 
     }
@@ -119,23 +139,25 @@ public class RegisterActivity extends AppCompatActivity {
         firstnm = editTextfirstnm.getText().toString();
         middlenm = editTextmidlenm.getText().toString();
         lastnm = editTextlastnm.getText().toString();
-        emailid = editTextemailid.getText().toString();
         mobileno = editTextmobileno.getText().toString();
         password = editTextpassword.getText().toString();
         address = editTextaddress.getText().toString();
         dob = editTextdob.getText().toString();
         branch = spinnerbranch.getSelectedItem().toString();
         semister = spinnersemister.getSelectedItem().toString();
+        if (radioButtonmale.isChecked()==true)
+        {
+            gender="Male";
+        }
+        else {
+            gender="Female";
+        }
+
+
         new GetPersonData().execute();
     }
 
-    public void Validation()
-    {
-        String MobilePattern = "[0-9]{10}";
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
-
-    }
 
 //    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id)
 //    {
@@ -144,6 +166,8 @@ public class RegisterActivity extends AppCompatActivity {
 //    }
 //
 //    public void onNothingSelected(AdapterView<?> arg0) { }
+
+
 
     public class GetPersonData extends AsyncTask<String, String, String> {
 
@@ -166,7 +190,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             shh = new ServiceHandler();
 
-            String url = path + "InformationApi/PersonalInfo";
+            String url = path + "Registration/StudentRegister";
 
             Log.d("Url: ", "> " + url);
 
@@ -174,17 +198,17 @@ public class RegisterActivity extends AppCompatActivity {
 
                 List<NameValuePair> para = new ArrayList<>();
 
-                para.add(new BasicNameValuePair("EnrollmentNo", enrollno));
-                para.add(new BasicNameValuePair("FirstName", firstnm));
-                para.add(new BasicNameValuePair("MiddleName", middlenm));
-                para.add(new BasicNameValuePair("LastName", lastnm));
-                para.add(new BasicNameValuePair("EmailId", emailid));
-                para.add(new BasicNameValuePair("MobileNo", mobileno));
-                para.add(new BasicNameValuePair("Password", password));
-                para.add(new BasicNameValuePair("Address", address));
-                para.add(new BasicNameValuePair("Date of Birth", dob));
-                para.add(new BasicNameValuePair("Semister", semister));
-                para.add(new BasicNameValuePair("Branch", branch));
+                para.add(new BasicNameValuePair("enrollmentno", enrollno));
+                para.add(new BasicNameValuePair("fname", firstnm));
+                para.add(new BasicNameValuePair("mname", middlenm));
+                para.add(new BasicNameValuePair("lname", lastnm));
+                para.add(new BasicNameValuePair("contactno", mobileno));
+                para.add(new BasicNameValuePair("studentpassword", password));
+                para.add(new BasicNameValuePair("address", address));
+                para.add(new BasicNameValuePair("birthdate", dob));
+                para.add(new BasicNameValuePair("semester", semister));
+                para.add(new BasicNameValuePair("branch", branch));
+                para.add(new BasicNameValuePair("sex", gender));
 
                 String jsonStr = shh.makeServiceCall(url, ServiceHandler.POST, para);
                 if (jsonStr != null) {
@@ -204,6 +228,8 @@ public class RegisterActivity extends AppCompatActivity {
             return null;
         }
 
+
+
         protected void onPostExecute(String result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
@@ -215,6 +241,15 @@ public class RegisterActivity extends AppCompatActivity {
             else {
                Toast.makeText(RegisterActivity.this, "Registered Failed", Toast.LENGTH_LONG).show();
            }
+
+           editTextenrollno.setText("");
+           editTextfirstnm.setText("");
+           editTextmidlenm.setText("");
+           editTextlastnm.setText("");
+           editTextmobileno.setText("");
+           editTextpassword.setText("");
+           editTextaddress.setText("");
+           editTextdob.setText("");
 
         }
     }
