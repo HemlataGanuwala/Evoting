@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button login, register;
     EditText editTextusername, editTextpassword;
+    ImageButton imageButtonshowpass;
     TextView textViewforgotpass;
     ProgressDialog progressDialog;
     ServiceHandler shh;
@@ -39,12 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         path= globalClass.getconstr();
 
         login=(Button)findViewById(R.id.btnlogin);
-        register=(Button)findViewById(R.id.btnregister);
+//        register=(Button)findViewById(R.id.btnregister);
 
         editTextusername=(EditText)findViewById(R.id.etusername);
         editTextpassword=(EditText)findViewById(R.id.etpass);
 
         textViewforgotpass=(TextView)findViewById(R.id.tvforgotpass);
+
+        imageButtonshowpass=(ImageButton)findViewById(R.id.showpass);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,14 +62,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent= new Intent(LoginActivity.this, RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
+//        register.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent intent= new Intent(LoginActivity.this, RegisterActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         textViewforgotpass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +77,25 @@ public class LoginActivity extends AppCompatActivity {
 
                 Intent intent= new Intent(LoginActivity.this, ForgotpassActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        imageButtonshowpass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+
+                    case MotionEvent.ACTION_UP:
+                        editTextpassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        break;
+
+                    case MotionEvent.ACTION_DOWN:
+                        editTextpassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                        break;
+
+                }
+
+                return true;
             }
         });
     }

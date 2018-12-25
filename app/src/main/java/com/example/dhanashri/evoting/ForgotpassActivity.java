@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
@@ -21,6 +24,8 @@ import java.util.List;
 public class ForgotpassActivity extends AppCompatActivity {
 
     Button changepass, back;
+
+    ImageButton imageButtonpass, imageButtonconformpass;
 
     EditText editTextenrollno, editTextpass, editTextconformpass;
     String enrollno, password, conformpass, path, pwd;
@@ -45,6 +50,9 @@ public class ForgotpassActivity extends AppCompatActivity {
         editTextpass=(EditText)findViewById(R.id.etpass);
         editTextconformpass= (EditText)findViewById(R.id.etconformpass);
 
+        imageButtonpass=(ImageButton)findViewById(R.id.imgpass);
+        imageButtonconformpass=(ImageButton)findViewById(R.id.imgconformpass);
+
 
         changepass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +74,44 @@ public class ForgotpassActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        imageButtonpass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+
+                    case MotionEvent.ACTION_UP:
+                        editTextpass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        break;
+
+                    case MotionEvent.ACTION_DOWN:
+                        editTextpass.setInputType(InputType.TYPE_CLASS_TEXT);
+                        break;
+
+                }
+
+                return true;
+            }
+        });
+
+        imageButtonconformpass.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()){
+
+                    case MotionEvent.ACTION_UP:
+                        editTextconformpass.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                        break;
+
+                    case MotionEvent.ACTION_DOWN:
+                        editTextconformpass.setInputType(InputType.TYPE_CLASS_TEXT);
+                        break;
+
+                }
+
+                return true;
+            }
         });
     }
 

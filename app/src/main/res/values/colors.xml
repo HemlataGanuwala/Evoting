@@ -9,4 +9,5 @@
     <color name="white">#ffffff</color>
     <color name="darkgray">#363232</color>
     <color name="royalblue">#04337a</color>
+    <color name="transeparent"></color>
 </resources>

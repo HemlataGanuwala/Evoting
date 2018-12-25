@@ -192,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
-                android:layout_weight="1"
+                android:layout_weight=".75"
                 android:hint="Password"
                 android:textColorHint="@color/darkgray"
                 android:textSize="14sp" />
@@ -208,6 +208,16 @@
                 android:paddingLeft="5dp"
                 android:textColor="@color/darkgray"
                 android:textSize="14sp" />
+
+            <ImageButton
+                android:id="@+id/imgbtnshow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight=".99"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/icon_showpass"
+                android:background="@color/transeparent"/>
 
         </LinearLayout>
 

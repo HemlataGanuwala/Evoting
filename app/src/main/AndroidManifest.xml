@@ -22,7 +22,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".DashboardActivity" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".ForgotpassActivity"></activity>
+        <activity android:name=".ForgotpassActivity" />
+        <activity android:name=".VotingActivity" />
+        <activity android:name=".HelpActivity"></activity>
     </application>
 
 </manifest>
