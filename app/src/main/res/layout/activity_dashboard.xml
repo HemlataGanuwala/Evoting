@@ -64,8 +64,9 @@
                         android:id="@+id/imgvoting"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:layout_weight=".40"
-                        android:src="@drawable/member1" />
+                        android:src="@drawable/icon_help1" />
 
                     <TextView
                         android:id="@+id/tvvoting"
@@ -104,8 +105,9 @@
                         android:id="@+id/imghelp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_gravity="center"
                         android:layout_weight=".40"
-                        android:src="@drawable/help" />
+                        android:src="@drawable/icon_memb" />
 
                     <TextView
                         android:id="@+id/tvhelp"
