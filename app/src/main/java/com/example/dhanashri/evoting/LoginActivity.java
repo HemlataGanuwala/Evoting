@@ -122,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDialog.setProgress(0);
             progressDialog.show();
+            progressDialog.setCanceledOnTouchOutside(false);
 
         }
 
