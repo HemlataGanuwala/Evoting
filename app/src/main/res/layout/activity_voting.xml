@@ -42,24 +42,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".90"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".85" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etvoter1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".65"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etenroll1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".80"
+                android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/imgvote1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".95"
+                android:layout_weight=".87"
                 android:background="@color/white"
                 android:src="@drawable/voting_icon" />
 
@@ -74,24 +85,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".90"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".85" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etvoter2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".65"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etenroll2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".80"
+                android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/imgvote2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".95"
+                android:layout_weight=".87"
                 android:background="@color/white"
                 android:src="@drawable/voting_icon" />
 
@@ -106,24 +128,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".90"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".85" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etvoter3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".65"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etenroll3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".80"
+                android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/imgvote3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".95"
+                android:layout_weight=".87"
                 android:background="@color/white"
                 android:src="@drawable/voting_icon" />
 
@@ -138,24 +171,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".90"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".85" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etvoter4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".65"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etenroll4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".80"
+                android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/imgvote4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".95"
+                android:layout_weight=".87"
                 android:background="@color/white"
                 android:src="@drawable/voting_icon" />
 
@@ -170,24 +214,35 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".90"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".85" />
 
-            <TextView
+            <EditText
+                android:id="@+id/etvoter5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight=".50"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".65"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/etenroll5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
+                android:layout_weight=".80"
+                android:textSize="12sp" />
 
             <ImageButton
+                android:id="@+id/imgvote5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".95"
+                android:layout_weight=".87"
                 android:background="@color/white"
                 android:src="@drawable/voting_icon" />
 

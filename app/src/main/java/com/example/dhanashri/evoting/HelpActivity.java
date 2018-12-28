@@ -19,8 +19,8 @@ import java.util.List;
 
 public class HelpActivity extends AppCompatActivity {
 
-    String path, cdate;
-    EditText editTextdate;
+    String path, cdate, ctime;
+    EditText editTextdate, editTexttime;
     ProgressDialog progressDialog;
     ServiceHandler shh;
     int Status = 1;
@@ -34,6 +34,7 @@ public class HelpActivity extends AppCompatActivity {
         path= globalClass.getconstr();
 
         editTextdate=(EditText)findViewById(R.id.etcalender);
+        editTexttime=(EditText)findViewById(R.id.ettime);
 
         new GetDate().execute();
 
@@ -78,6 +79,7 @@ public class HelpActivity extends AppCompatActivity {
 
                         JSONObject a1=jsonArray.getJSONObject(i);
                         cdate= a1.getString("bdate");
+                        ctime= a1.getString("vtime");
 
                     }
 
@@ -100,6 +102,7 @@ public class HelpActivity extends AppCompatActivity {
             progressDialog.dismiss();
 
             editTextdate.setText(cdate);
+            editTexttime.setText(ctime);
 
         }
     }

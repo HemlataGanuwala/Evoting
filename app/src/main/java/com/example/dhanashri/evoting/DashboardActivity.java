@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
 
     ViewFlipper viewFlipper;
     CardView cardViewvoting, cardViewhelp;
-    String path, cdate, tdate, sdate;
+    String path, cdate, tdate, sdate, enrollno;
     ProgressDialog progressDialog;
     ServiceHandler shh;
     int Status = 1;
@@ -55,6 +55,7 @@ public class DashboardActivity extends AppCompatActivity {
         Date d = new Date();
         CharSequence g = android.text.format.DateFormat.format("yyyy-MM-dd",d.getTime());
         tdate = g.toString();
+        Display();
 
         new GetDate().execute();
 
@@ -66,9 +67,10 @@ public class DashboardActivity extends AppCompatActivity {
 
 
 
-                if(tdate==sdate) {
+                if(tdate.equals(sdate)) {
 
                     Intent intent=new Intent(DashboardActivity.this, VotingActivity.class);
+                    intent.putExtra("a2", enrollno);
                     startActivity(intent);
 
                 }
@@ -94,6 +96,15 @@ public class DashboardActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    public void Display()
+    {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle!=null){
+            enrollno=(String)bundle.get("a1");
+        }
     }
 
 
@@ -150,11 +161,10 @@ public class DashboardActivity extends AppCompatActivity {
                         JSONObject a1=jsonArray.getJSONObject(i);
                         cdate= a1.getString("bdate");
 
-                        String date = cdate;
-                        StringTokenizer tk = new StringTokenizer(date);
+                        sdate= cdate;
+                        sdate= sdate.substring(0, 10);
 
-                        sdate = tk.nextToken();  // <---  yyyy-mm-dd
-                        String time = tk.nextToken();
+
                     }
 
                 } else {
