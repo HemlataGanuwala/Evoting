@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         final GlobalClass globalClass=(GlobalClass)getApplicationContext();
-        globalClass.setconstr("http://192.168.0.106:8052/api/");
+        globalClass.setconstr("http://192.168.0.106:8011/api/");
 
         new Handler().postDelayed(new Runnable() {
             @Override

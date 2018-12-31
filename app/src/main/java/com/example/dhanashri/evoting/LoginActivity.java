@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
 
     Button login, register;
     EditText editTextusername, editTextpassword;
+    CheckBox checkBoxremember;
     ImageButton imageButtonshowpass;
     TextView textViewforgotpass;
     ProgressDialog progressDialog;
@@ -51,6 +53,8 @@ public class LoginActivity extends AppCompatActivity {
         textViewforgotpass=(TextView)findViewById(R.id.tvforgotpass);
 
         imageButtonshowpass=(ImageButton)findViewById(R.id.showpass);
+
+        checkBoxremember=(CheckBox)findViewById(R.id.remeberme);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

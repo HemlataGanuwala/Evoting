@@ -18,18 +18,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_weight=".95"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="Voting Information"
+                android:layout_weight=".95"
                 android:gravity="center"
-                android:textSize="38sp"
-                android:textStyle="bold"
-                android:textColor="@color/darkblue"/>
+                android:text="Election Member List"
+                android:textColor="@color/darkblue"
+                android:textSize="36sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -45,28 +45,35 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".85" />
+                android:layout_weight=".85"
+                android:src="@drawable/icon_laptop" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etvoter1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".65"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/darkgray"
+                android:textSize="14sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etenroll1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".80"
+                android:gravity="center"
+                android:textColor="@color/darkgray"
                 android:textSize="12sp" />
 
             <ImageButton
                 android:id="@+id/imgvote1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
@@ -88,28 +95,35 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".85" />
+                android:layout_weight=".85"
+                android:src="@drawable/icon_keybard" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etvoter2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".65"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/darkgray"
+                android:textSize="14sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etenroll2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".80"
+                android:gravity="center"
+                android:textColor="@color/darkgray"
                 android:textSize="12sp" />
 
             <ImageButton
                 android:id="@+id/imgvote2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
@@ -131,28 +145,35 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".85" />
+                android:layout_weight=".85"
+                android:src="@drawable/icon_mouse" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etvoter3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".65"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/darkgray"
+                android:textSize="14sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etenroll3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".80"
+                android:gravity="center"
+                android:textColor="@color/darkgray"
                 android:textSize="12sp" />
 
             <ImageButton
                 android:id="@+id/imgvote3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
@@ -174,28 +195,35 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".85" />
+                android:layout_weight=".85"
+                android:src="@drawable/icon_printer" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etvoter4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".65"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/darkgray"
+                android:textSize="14sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etenroll4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".80"
+                android:gravity="center"
+                android:textColor="@color/darkgray"
                 android:textSize="12sp" />
 
             <ImageButton
                 android:id="@+id/imgvote4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
@@ -217,28 +245,35 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_weight=".85" />
+                android:layout_weight=".85"
+                android:src="@drawable/icon_scanner" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etvoter5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".65"
-                android:textSize="12sp" />
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@color/darkgray"
+                android:textSize="14sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etenroll5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".80"
+                android:gravity="center"
+                android:textColor="@color/darkgray"
                 android:textSize="12sp" />
 
             <ImageButton
                 android:id="@+id/imgvote5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginBottom="5dp"

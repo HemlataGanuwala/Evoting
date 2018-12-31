@@ -19,7 +19,7 @@ import java.util.List;
 
 public class HelpActivity extends AppCompatActivity {
 
-    String path, cdate, ctime;
+    String path, cdate, ctime, sdate;
     EditText editTextdate, editTexttime;
     ProgressDialog progressDialog;
     ServiceHandler shh;
@@ -81,6 +81,9 @@ public class HelpActivity extends AppCompatActivity {
                         cdate= a1.getString("bdate");
                         ctime= a1.getString("vtime");
 
+                        sdate= cdate;
+                        sdate= sdate.substring(0, 10);
+
                     }
 
                 } else {
@@ -101,7 +104,7 @@ public class HelpActivity extends AppCompatActivity {
             super.onPostExecute(result);
             progressDialog.dismiss();
 
-            editTextdate.setText(cdate);
+            editTextdate.setText(sdate);
             editTexttime.setText(ctime);
 
         }

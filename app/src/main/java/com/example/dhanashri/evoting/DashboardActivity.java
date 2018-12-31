@@ -59,18 +59,16 @@ public class DashboardActivity extends AppCompatActivity {
 
         new GetDate().execute();
 
-
-
         cardViewvoting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
 
                 if(tdate.equals(sdate)) {
 
                     Intent intent=new Intent(DashboardActivity.this, VotingActivity.class);
                     intent.putExtra("a2", enrollno);
+                    intent.putExtra("a3", sdate);
                     startActivity(intent);
 
                 }
@@ -104,6 +102,8 @@ public class DashboardActivity extends AppCompatActivity {
         Bundle bundle = intent.getExtras();
         if(bundle!=null){
             enrollno=(String)bundle.get("a1");
+
+
         }
     }
 
@@ -128,12 +128,6 @@ public class DashboardActivity extends AppCompatActivity {
         protected void onPreExecute() {
             // TODO Auto-generated method stub
             super.onPreExecute();
-            progressDialog = new ProgressDialog(DashboardActivity.this);
-            progressDialog.setMessage("Loading...");
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setProgress(0);
-            progressDialog.show();
-            progressDialog.setCanceledOnTouchOutside(false);
 
         }
 
@@ -183,7 +177,7 @@ public class DashboardActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             // TODO Auto-generated method stub
             super.onPostExecute(result);
-            progressDialog.dismiss();
+
 
 
         }
