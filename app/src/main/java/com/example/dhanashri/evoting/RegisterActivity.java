@@ -195,19 +195,19 @@ public class RegisterActivity extends AppCompatActivity {
     {
         boolean valid = true;
 
-        if(firstnm.isEmpty()||firstnm.length()>20)
+        if(firstnm.isEmpty())
         {
             editTextfirstnm.setError("Please Enter Your First Name");
             valid = false;
         }
 
-        if(middlenm.isEmpty()||middlenm.length()>20)
+        if(middlenm.isEmpty())
         {
             editTextmidlenm.setError("Please Enter Your Middle Name");
             valid = false;
         }
 
-        if(lastnm.isEmpty()||lastnm.length()>20)
+        if(lastnm.isEmpty())
         {
             editTextlastnm.setError("Please Enter Your Last Name");
             valid = false;
@@ -228,19 +228,13 @@ public class RegisterActivity extends AppCompatActivity {
             valid = false;
         }
 
-        if(enrollno.isEmpty())
-        {
-            editTextaddress.setError("Please Enter Your Enrollment No");
-            valid = false;
-        }
-
         if(mobileno.isEmpty()||mobileno.length()==10)
         {
             editTextmobileno.setError("Please Enter Valid Mobile No");
             valid = false;
         }
 
-        if(enrollno.isEmpty()||mobileno.length()==12)
+        if(enrollno.isEmpty()||enrollno.length()==12)
         {
             editTextenrollno.setError("Please Enter Valid Enrollment No");
             valid = false;

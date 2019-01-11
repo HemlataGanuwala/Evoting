@@ -70,7 +70,7 @@
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight=".40"
-                            android:src="@drawable/icon_help1" />
+                            android:src="@drawable/iconmember" />
 
                         <TextView
                             android:id="@+id/tvvoting"

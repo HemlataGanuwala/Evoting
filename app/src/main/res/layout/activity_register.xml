@@ -205,6 +205,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_weight=".50"
                 android:background="@drawable/bg_ext"
+                android:inputType="textPassword"
                 android:paddingLeft="5dp"
                 android:textColor="@color/darkgray"
                 android:textSize="14sp" />
